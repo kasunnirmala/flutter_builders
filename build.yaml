@@ -1,0 +1,21 @@
+targets:
+  $default:
+    builders:
+      flutter_builder_test|api_modal_builder:
+        enabled: True
+        generate_for:
+          - lib/api/*
+
+
+builders:
+  api_modal_builder:
+    import: "package:flutter_builder_test/_builders/builder.dart"
+    builder_factories: ["productBuilder"]
+    # build_extensions: {".dart": [".api.part"]}
+    build_extensions: 
+      .dart:
+        - .api.dart 
+    auto_apply: root_package
+    # build_to: cache
+    build_to: source
+    # applies_builders: ["source_gen|combining_builder"]
